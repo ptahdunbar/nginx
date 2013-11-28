@@ -34,13 +34,12 @@ when 'rhel', 'fedora'
     key         'RPM-GPG-KEY-Nginx'
   end
 when 'debian'
-  include_recipe 'apt::default'
-
-  apt_repository 'nginx' do
-    uri          node['nginx']['upstream_repository']
-    distribution node['lsb']['codename']
-    components   %w[nginx]
-    deb_src      true
-    key          'http://nginx.org/keys/nginx_signing.key'
+  apt_repository "nginx-stable" do
+	  uri "http://ppa.launchpad.net/nginx/stable/ubuntu"
+	  distribution node['lsb']['codename']
+	  components ["main"]
+	  keyserver "keyserver.ubuntu.com"
+	  key "C300EE8C"
+	  action :add
   end
 end
