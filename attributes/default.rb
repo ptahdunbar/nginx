@@ -106,11 +106,5 @@ default['nginx']['open_file_cache_valid']    = '30s'
 default['nginx']['open_file_cache_min_uses']    = 2
 default['nginx']['open_file_cache_errors']    = 'on'
 
-default['nginx']['fastcgi_cache_path']    = '/var/run/nginx-cache'
-default['nginx']['fastcgi_cache_keys_zone']    = 'web'
-default['nginx']['fastcgi_cache_key']    = '$scheme$request_method$host$request_uri'
-default['nginx']['fastcgi_cache_keys_max_size']    = '150m'
-default['nginx']['fastcgi_cache_valid']    = '50m'
-
-
+default['nginx']['fastcgi_read_timeout']    = 3600
 
