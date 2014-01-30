@@ -110,6 +110,7 @@ default['nginx']['fastcgi_cache_path']    = '/var/run/nginx-cache'
 default['nginx']['fastcgi_cache_keys_zone']    = 'web'
 default['nginx']['fastcgi_cache_key']    = '$scheme$request_method$host$request_uri'
 default['nginx']['fastcgi_cache_keys_max_size']    = '150m'
+default['nginx']['fastcgi_cache_valid']    = '50m'
 
 
 
