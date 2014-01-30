@@ -71,6 +71,11 @@ http {
   <% if node['nginx']['client_max_body_size'] -%>
   client_max_body_size <%= node['nginx']['client_max_body_size'] %>;
   <% end -%>
+  
+  open_file_cache max=<%= node['nginx']['open_file_cache_max'] %> inactive=<%= node['nginx']['open_file_cache_inactive'] %>;
+  open_file_cache_valid    <%= node['nginx']['open_file_cache_valid'] %>; 
+  open_file_cache_min_uses <%= node['nginx']['open_file_cache_min_uses'] %>;
+  open_file_cache_errors   <%= node['nginx']['open_file_cache_errors'] %>;
 
   <% if node['nginx']['enable_rate_limiting'] -%>
   limit_req_zone $binary_remote_addr zone=<%= node['nginx']['rate_limiting_zone_name'] %>:<%= node['nginx']['rate_limiting_backoff'] %> rate=<%= node['nginx']['rate_limit'] %>;
