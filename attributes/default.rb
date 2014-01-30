@@ -77,7 +77,7 @@ default['nginx']['gzip_min_length']   = 1_000
 default['nginx']['gzip_disable']      = 'MSIE [1-6]\.'
 
 default['nginx']['keepalive']            = 'on'
-default['nginx']['keepalive_timeout']    = 65
+default['nginx']['keepalive_timeout']    = 20
 default['nginx']['worker_processes']     = node['cpu'] && node['cpu']['total'] ? node['cpu']['total'] : 1
 default['nginx']['worker_connections']   = 1_024
 default['nginx']['worker_rlimit_nofile'] = nil
@@ -96,5 +96,20 @@ default['nginx']['types_hash_max_size']    = 2_048
 default['nginx']['types_hash_bucket_size'] = 64
 
 default['nginx']['proxy_read_timeout']      = nil
-default['nginx']['client_body_buffer_size'] = nil
-default['nginx']['client_max_body_size']    = nil
+default['nginx']['client_body_buffer_size'] = '128k'
+default['nginx']['client_max_body_size']    = '100m'
+
+
+default['nginx']['open_file_cache_max']    = 1000
+default['nginx']['open_file_cache_inactive']    = '20s'
+default['nginx']['open_file_cache_valid']    = '30s'
+default['nginx']['open_file_cache_min_uses']    = 2
+default['nginx']['open_file_cache_errors']    = 'on'
+
+default['nginx']['fastcgi_cache_path']    = '/var/run/nginx-cache'
+default['nginx']['fastcgi_cache_keys_zone']    = 'web'
+default['nginx']['fastcgi_cache_key']    = '$scheme$request_method$host$request_uri'
+default['nginx']['fastcgi_cache_keys_max_size']    = '150m'
+
+
+
