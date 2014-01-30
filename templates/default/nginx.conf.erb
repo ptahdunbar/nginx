@@ -77,9 +77,6 @@ http {
   open_file_cache_min_uses <%= node['nginx']['open_file_cache_min_uses'] %>;
   open_file_cache_errors   <%= node['nginx']['open_file_cache_errors'] %>;
   
-  fastcgi_cache_path /var/cache/nginx levels=1:2 keys_zone=microcache:10m max_size=1000m inactive=60m;
-  fastcgi_cache_path <%= node['nginx']['fastcgi_cache_path'] %> levels=1:2 keys_zone=microcache:10m max_size=1000m inactive=60m;
-  
   fastcgi_cache_path <%= node['nginx']['fastcgi_cache_path'] %> levels=1:2 keys_zone=<%= node['nginx']['fastcgi_cache_keys_zone'] %>:100m  max_size=<%= node['nginx']['fastcgi_cache_keys_max_size'] %> inactive=60m;
   fastcgi_cache_key "<%= node['nginx']['fastcgi_cache_keys_zone'] %>";
   fastcgi_cache_use_stale error timeout invalid_header http_500;
